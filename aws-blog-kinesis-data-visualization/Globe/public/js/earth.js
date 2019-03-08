@@ -234,7 +234,7 @@
 	
 	// create controls
 	var controls = new THREE.OrbitControls(camera);
-	controls.autoRotate = true;
+	controls.autoRotate = false;
 	
 	// create renderer
 	var renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );

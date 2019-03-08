@@ -1,5 +1,5 @@
 {
-  "name": "Globe",
+  "name": "globe",
   "version": "0.0.1",
   "private": true,
   "main": "server.js",
@@ -7,9 +7,15 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "chartjs-plugin-streaming": "^1.7.1",
+    "emitter": "0.0.5",
     "express": "3.2.6",
     "jade": "*",
     "redis": "^0.11.0",
     "socket.io": "^1.0.6"
-  }
+  },
+  "description": "",
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC"
 }

@@ -20,6 +20,16 @@ app.get('/heatmap', function(req, res) {
 	res.sendfile('heatmap.html');
 });
 
+//serve the heatmap-detailed page
+app.get('/heatmap-detailed', function(req, res) {
+	res.sendfile('heatmap-detailed.html');
+});
+
+//serve the heatmap page
+app.get('/chart', function(req, res) {
+	res.sendfile('chart.html');
+});
+
 app.get('/', function(req, res) {
 	res.sendfile('globe.html');
 });
@@ -37,7 +47,7 @@ redisClient.on('message', function(channel, message) {
 
 // subscribe to listen to events from redis
 redisClient.on("ready", function () {		
-	redisClient.subscribe("loc");
+	redisClient.subscribe("loc2");
 });
 
 // log that someone has connected via sockets (they are now listening for redis events)
