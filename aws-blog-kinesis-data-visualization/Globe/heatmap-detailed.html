@@ -5,7 +5,7 @@
     <title>Streaming Data Demo</title>
 
     <style>
-        #map { width: 800px; height: 600px; }
+        #map { width: 100%; height: 93%; }
         body { font: 16px/1.4 "Helvetica Neue", Arial, sans-serif; }
         .ghbtns { position: relative; top: 4px; margin-left: 5px; }
         a { color: #0077ff; }
@@ -18,6 +18,7 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
+
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -31,11 +32,17 @@
             <li class="nav-item">
                 <a class="nav-link" href="globe">Globe</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="heatmap">Heatmap</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Heatmaps
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="heatmap">Basic Heatmap</a>
+                    <a class="dropdown-item" href="heatmap-detailed">Detailed Heatmap</a>
+                </div>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="chart">Chart<span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link" href="chart">Chart</a>
             </li>
         </ul>
     </div>
@@ -46,19 +53,14 @@
 <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
 <script src="http://leaflet.github.io/Leaflet.heat/dist/leaflet-heat.js"></script>
 
-<script src="http://leaflet.github.io/Leaflet.markercluster/example/realworld.388.js"></script>
 <script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
 <script>
 
-var map = L.map('map').setView([-37.82109, 175.2193], 16);
+var map = L.map('map').setView([52.777814, -3.430458], 5);
 
 var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
 }).addTo(map);
-
-addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
-
-var heat = L.heatLayer(addressPoints).addTo(map),
     draw = true;
 
     var socket = io();
@@ -68,8 +70,11 @@ var heat = L.heatLayer(addressPoints).addTo(map),
 	    draw = true;
 	});
 
+setTimeout(function(){ map.invalidateSize()}, 400);
 </script>
-
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 </body>
 </html>
