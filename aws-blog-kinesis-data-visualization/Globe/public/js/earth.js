@@ -244,7 +244,7 @@
 	
 	var socket = io();
 	
-	socket.on('tweet', function(coord) {
+	socket.on('message', function(coord) {
 		startLight(coord.lat, coord.lng, 2000, 0x6DAEE1);
 	});
 
